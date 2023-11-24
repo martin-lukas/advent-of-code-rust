@@ -1,7 +1,14 @@
 #![allow(unused)]
 
 use std::fs;
-use Choice::*;
+
+// Point system
+const ROCK: i32 = 1;
+const PAPER: i32 = 2;
+const SCISSORS: i32 = 3;
+const LOSS: i32 = 0;
+const DRAW: i32 = 3;
+const WIN: i32 = 6;
 
 pub fn solution() -> String {
     let data = fs::read_to_string("src/day2/input.txt").unwrap();
@@ -20,26 +27,6 @@ fn get_score_for_strategy_choices(games: &Vec<(&str, &str)>) -> i32 {
 
 fn get_score_for_strategy_outcomes(games: &Vec<(&str, &str)>) -> i32 {
     games.into_iter().map(|g| choice_outcome_score(*g)).sum()
-}
-
-fn result_score(game: &(Choice, Choice)) -> i32 {
-    match game {
-        (Rock, choice) => match choice {
-            Rock => ROCK + DRAW,
-            Paper => PAPER + WIN,
-            Scissors => SCISSORS + LOSS,
-        },
-        (Paper, choice) => match choice {
-            Rock => ROCK + LOSS,
-            Paper => PAPER + DRAW,
-            Scissors => SCISSORS + WIN,
-        },
-        (Scissors, choice) => match choice {
-            Rock => ROCK + WIN,
-            Paper => PAPER + LOSS,
-            Scissors => SCISSORS + DRAW,
-        },
-    }
 }
 
 fn to_char_tuple(game_str: &str) -> (&str, &str) {
@@ -133,36 +120,6 @@ fn choice_outcome_score(game: (&str, &str)) -> i32 {
     }
 }
 
-//     let first_choice = match first {
-//         "A" => Rock,
-//         "B" => Paper,
-//         "C" => Scissors,
-//         _ => panic!("The input for choice '{}' was invalid.", first),
-//     };
-//     let second_choice = match second {
-//         "X" => Rock,
-//         "Y" => Paper,
-//         "Z" => Scissors,
-//         _ => panic!("The input for choice '{}' was invalid.", second),
-//     };
-//     (first_choice, second_choice)
-// }
-
 fn panic_for_game(game: &str) {
     panic!("Unexpected no. of elements in line (expected 2): {}", game);
 }
-
-#[derive(Debug)]
-enum Choice {
-    Rock,
-    Paper,
-    Scissors,
-}
-
-const ROCK: i32 = 1;
-const PAPER: i32 = 2;
-const SCISSORS: i32 = 3;
-
-const LOSS: i32 = 0;
-const DRAW: i32 = 3;
-const WIN: i32 = 6;
