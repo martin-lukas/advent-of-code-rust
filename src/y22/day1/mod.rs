@@ -1,9 +1,10 @@
 #![allow(unused)]
 
+use crate::utils::{puzzle_input, AocYear};
 use std::fs;
 
 pub fn solution() -> String {
-    let data = fs::read_to_string("src/y22/day1/input.txt").unwrap();
+    let data = puzzle_input(AocYear::Y22, 1);
     let elfs: Vec<Elf> = data
         .split("\n\n")
         .into_iter()

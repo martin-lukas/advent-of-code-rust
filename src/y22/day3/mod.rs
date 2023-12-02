@@ -5,8 +5,10 @@ use std::fs;
 
 use itertools::Itertools;
 
+use crate::utils::{puzzle_input, AocYear};
+
 pub fn solution() -> String {
-    let data = fs::read_to_string("src/y22/day3/input.txt").unwrap();
+    let data = puzzle_input(AocYear::Y22, 3);
     let rucksacks = data.lines().collect::<Vec<&str>>();
     let shared_item_priorities = rucksacks
         .clone()

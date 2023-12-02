@@ -2,6 +2,8 @@
 
 use std::fs;
 
+use crate::utils::{puzzle_input, AocYear};
+
 // Point system
 const ROCK: i32 = 1;
 const PAPER: i32 = 2;
@@ -11,7 +13,7 @@ const DRAW: i32 = 3;
 const WIN: i32 = 6;
 
 pub fn solution() -> String {
-    let data = fs::read_to_string("src/y22/day2/input.txt").unwrap();
+    let data = puzzle_input(AocYear::Y22, 2);
     let games: &Vec<(&str, &str)> = &data.trim().lines().into_iter().map(to_char_tuple).collect();
     format!(
         "Score if right side are choices: {}\n\
