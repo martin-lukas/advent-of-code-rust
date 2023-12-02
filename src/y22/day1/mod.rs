@@ -3,7 +3,7 @@
 use std::fs;
 
 pub fn solution() -> String {
-    let data = fs::read_to_string("src/day1/input.txt").unwrap();
+    let data = fs::read_to_string("src/y22/day1/input.txt").unwrap();
     let elfs: Vec<Elf> = data
         .split("\n\n")
         .into_iter()

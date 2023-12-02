@@ -6,7 +6,7 @@ use std::fs;
 use itertools::Itertools;
 
 pub fn solution() -> String {
-    let data = fs::read_to_string("src/day3/input.txt").unwrap();
+    let data = fs::read_to_string("src/y22/day3/input.txt").unwrap();
     let rucksacks = data.lines().collect::<Vec<&str>>();
     let shared_item_priorities = rucksacks
         .clone()
